@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlasia Library Management System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2000') center/cover;
+            min-height: 100vh;
+        }
+        .cyberpunk-title {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .book-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        .search-bar {
+            background: rgba(16, 185, 129, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <nav class="bg-gray-900/80 backdrop-blur-md border-b border-cyan-500/30">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="cyberpunk-title text-2xl md:text-3xl text-cyan-400">ATLASIA</h1>
+            <div class="flex items-center gap-4">
+                <button class="p-2 hover:text-cyan-400 transition-colors">
+                    <i class="bi bi-bell text-xl"></i>
+                </button>
+                <button class="p-2 hover:text-cyan-400 transition-colors">
+                    <i class="bi bi-person-circle text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="search-bar rounded-lg p-4 mb-8 neon-border">
+            <div class="flex gap-2">
+                <input type="search" placeholder="Search books, authors, or genres..." 
+                       class="w-full bg-gray-800/50 border border-cyan-500/30 rounded-lg px-4 py-2 focus:outline-none focus:border-cyan-400">
+                <button class="bg-cyan-500 hover:bg-cyan-600 px-6 py-2 rounded-lg transition-colors">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Quick Access Cards -->
+            <div class="book-card bg-gray-800/50 p-6 rounded-lg neon-border">
+                <i class="bi bi-collection text-4xl text-cyan-400"></i>
+                <h3 class="cyberpunk-title mt-4 mb-2">My Collection</h3>
+                <p class="text-gray-400">12 Books</p>
+            </div>
+            <div class="book-card bg-gray-800/50 p-6 rounded-lg neon-border">
+                <i class="bi bi-bookmark-heart text-4xl text-emerald-400"></i>
+                <h3 class="cyberpunk-title mt-4 mb-2">Wishlist</h3>
+                <p class="text-gray-400">5 Books</p>
+            </div>
+            <div class="book-card bg-gray-800/50 p-6 rounded-lg neon-border">
+                <i class="bi bi-clock-history text-4xl text-purple-400"></i>
+                <h3 class="cyberpunk-title mt-4 mb-2">History</h3>
+                <p class="text-gray-400">Recent Activity</p>
+            </div>
+            <div class="book-card bg-gray-800/50 p-6 rounded-lg neon-border">
+                <i class="bi bi-grid text-4xl text-yellow-400"></i>
+                <h3 class="cyberpunk-title mt-4 mb-2">Categories</h3>
+                <p class="text-gray-400">Browse All</p>
+            </div>
+        </div>
+
+        <h2 class="cyberpunk-title text-2xl mt-12 mb-6 text-cyan-400">Trending Books</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <!-- Book Cards -->
+            <div class="book-card bg-gray-800/50 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400" alt="Book Cover" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold">Neural Networks</h3>
+                    <p class="text-sm text-gray-400">Tech & Science</p>
+                </div>
+            </div>
+            <div class="book-card bg-gray-800/50 rounded-lg overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400" alt="Book Cover" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-semibold">Quantum Tales</h3>
+                    <p class="text-sm text-gray-400">Fiction</p>
+                </div>
+            </div>
+            <!-- Add more book cards as needed -->
+        </div>
+    </main>
+
+    <script>
+        // Search functionality
+        const searchInput = document.querySelector('input[type="search"]');
+        searchInput.addEventListener('keyup', function(e) {
+            if(e.key === 'Enter') {
+                // Implement search functionality
+                console.log('Searching for:', this.value);
+            }
+        });
+
+        // Add hover effects for cards
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('scale-105');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('scale-105');
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
